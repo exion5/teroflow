@@ -5,7 +5,7 @@ const int switch4 = 5;
 const int ledPin = 10;
 const int speakerPin = 11;
 
-const int speakerVolume = 128; // medium volume for testing
+const int speakerVolume = 128;
 
 bool pythonOverride = false;
 bool speakerActive = false;
@@ -18,46 +18,52 @@ void setup() {
   pinMode(ledPin, OUTPUT);
   pinMode(speakerPin, OUTPUT);
 
-  analogWrite(speakerPin, 0); // speaker OFF by default
-  digitalWrite(ledPin, LOW);  // LED OFF by default
+  analogWrite(speakerPin, 0);
+  digitalWrite(ledPin, LOW);
 
   Serial.begin(9600);
   Serial.println("Arduino ready");
 }
 
 void loop() {
-  // --- Check for Python commands ---
-  if (Serial.available() > 0) {
-    char cmd = Serial.read();
-    pythonOverride = true;
-    if (cmd == '1') speakerActive = true;
-    if (cmd == '0') speakerActive = false;
+  // Read switches
+  bool s1 = digitalRead(switch1) == LOW;
+  bool s2 = digitalRead(switch2) == LOW;
+  bool s3 = digitalRead(switch3) == LOW;
+  bool s4 = digitalRead(switch4) == LOW;
 
-    Serial.print("Python command received: ");
-    Serial.println(cmd);
-  }
+  // Check switch password
+  bool passwordCorrect = s1 && !s2 && s3 && s4;
 
-  // --- Act according to override or switches ---
-  if (pythonOverride) {
-    analogWrite(speakerPin, speakerActive ? speakerVolume : 0);
-    digitalWrite(ledPin, speakerActive ? HIGH : LOW);
+  if (passwordCorrect) {
+    // Switch password overrides Python
+    digitalWrite(ledPin, HIGH);
+    analogWrite(speakerPin, 0);
+    pythonOverride = false;  // ignore Python while password active
   } else {
-    bool s1 = digitalRead(switch1) == LOW;
-    bool s2 = digitalRead(switch2) == LOW;
-    bool s3 = digitalRead(switch3) == LOW;
-    bool s4 = digitalRead(switch4) == LOW;
+    // Only read Python commands if password NOT active
+    if (Serial.available() > 0) {
+      char cmd = Serial.read();
+      if (cmd == '1') {
+        speakerActive = true;
+      } else if (cmd == '0') {
+        speakerActive = false;
+      }
+      pythonOverride = true;
+      Serial.print("Python command received: ");
+      Serial.println(cmd);
+    }
 
-    // Password logic: s1 HIGH, s2 LOW, s3 HIGH, s4 HIGH
-    if (s1 && !s2 && s3 && s4) {
-      digitalWrite(ledPin, HIGH);
-      analogWrite(speakerPin, 0); // Speaker OFF
-      Serial.println("Switch password correct → LED ON, Speaker OFF");
+    // Apply Python control if override is active
+    if (pythonOverride) {
+      analogWrite(speakerPin, speakerActive ? speakerVolume : 0);
+      digitalWrite(ledPin, speakerActive ? HIGH : LOW);
     } else {
+      // default state when no Python and password inactive
+      analogWrite(speakerPin, 0);
       digitalWrite(ledPin, LOW);
-      analogWrite(speakerPin, speakerVolume); // Speaker ON
-      Serial.println("Switch password incorrect → LED OFF, Speaker ON");
     }
   }
 
-  delay(100); // small delay
+  delay(100);
 }
