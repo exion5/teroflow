@@ -25,7 +25,7 @@ Instead of relying on traditional timers, Tero Flow actively checks whether you 
 - Extends or pauses sessions depending on focus  
 - Notifies you when it's time to refocus or take breaks  
 
-### 📊 Productivity Insights *(optional/expandable)*  
+### 📊 Productivity Insights 
 - Track study time and consistency  
 - Visualize focus patterns over time  
 
@@ -37,13 +37,4 @@ Instead of relying on traditional timers, Tero Flow actively checks whether you 
 - **Styling:** Tailwind CSS  
 - **Animations:** Framer Motion  
 - **AI / Tracking:** OpenCV / Browser APIs / Custom Logic  
-- **Deployment:** GitHub Pages / Vercel  
-
----
-
-## ▶️ Getting Started  
-
-### 1. Clone the repository  
-```bash
-git clone https://github.com/your-username/tero-flow.git
-cd tero-flow
+- **Deployment:** Vercel  
