@@ -1,110 +1,73 @@
-📚 Smart AI Study Timer
+Tero Flow – Smart Study Alarm & Focus Tracker
+📌 Overview
 
-A modern, AI-powered study timer that keeps you accountable by monitoring your focus using your camera and screen activity—and enforces discipline with a physical alarm system powered by Arduino.
+Tero Flow is an intelligent study companion designed to help students stay focused and productive. It combines AI-powered face tracking, screen activity monitoring, and a smart alarm system to ensure you remain engaged during study sessions.
 
-🚀 Overview
+Instead of relying on traditional timers, Tero Flow actively checks whether you are actually studying — not just sitting in front of your device.
 
-Smart AI Study Timer is a productivity web app designed to ensure you stay focused while studying. It combines:
-
-🧠 AI-based attention tracking (camera + screen monitoring)
-⏱️ A smooth, customizable Pomodoro-style timer
-🚨 A physical alarm system using Arduino hardware
-🎛️ Manual override via breadboard switches
-
-If you get distracted, the system triggers a real-world alarm that forces you to refocus or physically intervene.
-
-✨ Features
-🎯 Focus Tracking
-Real-time camera monitoring (face direction, attention)
-Screen activity detection (study vs distraction)
-AI-based classification of user behavior
-⏳ Smart Timer
-Pomodoro-style study sessions
-Custom durations
-Smooth animated progress UI
-🚨 Physical Alarm System
-Alarm triggers when distraction is detected
-Stops automatically when you return to studying
-Manual override via hardware switches
-🔌 Arduino Integration
-Communicates with an Arduino device
-Reads breadboard switch inputs
-Controls external alarm/buzzer
-📊 Analytics Dashboard
-Focus vs distraction time
-Session stats and streaks
-Visual charts and insights
-🎨 Modern UI/UX
-Fully responsive design
-Light & dark mode
-Smooth animations and clean layout
+🚀 Features
+👁️ Face Tracking
+Uses your webcam to detect presence and attention
+Alerts you if you leave your study space
+Helps maintain accountability during sessions
+💻 Screen Monitoring
+Tracks active applications and usage
+Detects distractions (e.g., switching tabs or apps)
+Encourages focus by identifying off-task behavior
+⏰ Smart Study Alarm
+Adaptive timer based on your activity
+Extends or pauses sessions depending on focus
+Notifies you when it's time to refocus or take breaks
+📊 Productivity Insights (optional/expandable)
+Track study time and consistency
+Visualize focus patterns over time
 🛠️ Tech Stack
-Frontend
-React
-Tailwind CSS
-Vercel v0 (UI generation)
-Backend (planned / optional)
-Node.js / Express
-WebSocket or REST API
-AI / Tracking
-Computer vision (face detection, gaze tracking)
-Screen activity classification (tab tracking or heuristics)
-Hardware
-Arduino (USB serial communication)
-Breadboard switches
-Buzzer / alarm module
-🔧 Hardware Setup
-Components Required:
-Arduino board (e.g., Uno)
-Breadboard
-Push switches (2–3 recommended)
-Buzzer or alarm module
-Jumper wires
-Behavior:
-Switches act as manual override
-Arduino sends signals to the web app
-Alarm activates when triggered by AI logic
-🧠 How It Works
-Start a study session
-AI begins monitoring:
-Camera (are you paying attention?)
-Screen (are you on a study site?)
-If distraction is detected:
-Alarm is triggered via Arduino
-Alarm stops when:
-You return to a study-related activity, OR
-You toggle the physical switches
-📦 Installation
-# Clone the repository
-git clone https://github.com/yourusername/smart-ai-study-timer.git
-
-# Navigate into the project
-cd smart-ai-study-timer
-
-# Install dependencies
+Frontend: React + Vite
+Styling: Tailwind CSS
+Animations: Framer Motion
+AI / Tracking: (e.g., OpenCV, browser APIs, or custom logic)
+Deployment: GitHub Pages / Vercel
+▶️ Getting Started
+1. Clone the repository
+git clone https://github.com/your-username/tero-flow.git
+cd tero-flow
+2. Install dependencies
 npm install
-
-# Run development server
+3. Run the development server
 npm run dev
-⚙️ Configuration
-Camera permissions must be enabled in your browser
-Arduino should be connected via USB
-Configure serial communication (port + baud rate) in the backend
+4. Build for production
+npm run build
+🎯 Project Purpose
+
+Tero Flow was created to solve a common problem:
+
+Students often “study” without actually focusing.
+
+By combining real-time monitoring with smart feedback, the project aims to:
+
+Improve concentration
+Reduce distractions
+Build consistent study habits
+⚠️ Privacy Note
+
+Tero Flow respects user privacy:
+
+Face tracking is processed locally (no external storage)
+No personal data is shared without consent
+Users have full control over permissions
 🔮 Future Improvements
-Better AI models for attention detection
-Cross-platform desktop app (Electron)
-Mobile companion app
-Cloud sync & user accounts
-Advanced analytics and insights
-Integration with study platforms (e.g., YouTube lectures detection)
-⚠️ Disclaimer
+AI-based attention detection (eye tracking, posture)
+Mobile app integration
+Gamification (rewards, streaks)
+Advanced analytics dashboard
+👥 Team
+Your Name – Developer
+Team Member 2 – Developer
+Team Member 3 – Designer / Research
+📄 License
 
-This project uses camera and screen monitoring. All data should be processed locally or securely. Be mindful of privacy and user consent when extending this project.
+This project is open-source and available under the MIT License.
 
-🤝 Contributing
+💡 Final Note
 
-Contributions are welcome! Feel free to:
-
-Open issues
-Submit pull requests
-Suggest new features
+Tero Flow is more than a timer — it’s a smart accountability system designed to help you build real focus in a world full of distractions.
