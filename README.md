@@ -1,4 +1,5 @@
 # Tero Flow – Smart Study Alarm & Focus Tracker
+https://v0-vite-react-project-two.vercel.app/
 
 ## 📌 Overview  
 **Tero Flow** is an intelligent study companion designed to help students stay focused and productive. It combines **AI-powered face tracking**, **screen activity monitoring**, and a **smart alarm system** to ensure you remain engaged during study sessions.  
